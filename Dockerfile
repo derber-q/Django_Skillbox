@@ -12,6 +12,6 @@ RUN pip install -r requirements.txt
 COPY django_site/mysite .
 
 
-CMD ["gunicorn", "mysite.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "mysite.mysite.wsgi:application", "--bind", "0.0.0.0:8000"]
 
 
