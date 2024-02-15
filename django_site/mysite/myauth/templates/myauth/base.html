@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Tittle
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+       {% block body %}
+
+        {% endblock %}
+<div>
+
+    <p><a href="{% url 'shopapp:products_list' %}" >Back</a></p>
+
+</div>
+</body>
+</html>

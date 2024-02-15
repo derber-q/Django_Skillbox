@@ -1,0 +1,1 @@
+[{"model": "shopapp.order", "pk": 1, "fields": {"delivery_adress": "ul Gorkogo, d106", "promocode": "VESNA", "created_at": "2023-05-08T12:25:06.696Z", "user": 1, "products": [3, 4]}}, {"model": "shopapp.order", "pk": 5, "fields": {"delivery_adress": "Kirovskiy 42, k 13", "promocode": "t9", "created_at": "2023-06-14T15:22:37.253Z", "user": 10, "products": [3, 5]}}]
