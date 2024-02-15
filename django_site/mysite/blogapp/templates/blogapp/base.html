@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Tittle
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+       {% block body %}
+
+        {% endblock %}
+
+{% if request.user.is_authenticated %}
+       <h2>Account: {{ request.user.username }}</h2>
+            <p><a href="{% url 'myauth:about-me' %}" >About me</a></p>
+            <p><a href="{% url 'shopapp:orders_list' %}">My orders</a></p>
+            <p><a href="{% url 'myauth:logout' %}" >Logout</a></p>
+       {% else %}
+       <h2>You are not logged in</h2>
+            <p><a href="{% url 'myauth:login' %}" >Login</a></p>
+            <p><a href="{% url 'myauth:register' %}" >Register</a></p>
+       {% endif %}
+
+
+</body>
+</html>

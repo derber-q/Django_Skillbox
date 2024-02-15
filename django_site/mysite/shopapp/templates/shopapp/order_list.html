@@ -1,0 +1,57 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+ Orders List
+{% endblock %}
+
+{% block body %}
+    <h1>Пользователь {{ owner.username }} выполнил следующие заказы:</h1>
+    <div>
+
+        {% if orders %}
+        {% cache 60 programmers %}
+
+
+        <div>
+            {% for order in orders %}
+            
+            <div>
+                <p><a href="{% url 'shopapp:order_details' pk=order.pk %}">Заказ #{{ order.pk }}</a></p>
+                <p>Order by {% firstof order.user.first_name order.user.username %}</p>
+                <p>Promocode: <code>{{ order.promocode }}</code></p>
+                <p>Delivery address: {{order.delivery_adress }}</p>
+                <div>
+                    Product in order:
+                    <ul>
+                        {% for product  in order.products.all %}
+                        <li>{{ product.name }} for ${{product.prise}}</li>
+                        <br><br>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            {% endfor %}
+            {% endcache %}
+            {% else %}
+        <h3>No orders yet</h3>
+        {% endif %}
+
+
+        </div>
+    </div>
+
+<div>
+<a href="{% url 'shopapp:create_order' %}">
+        <h2>Create order</h2>
+    </a>
+</div>
+
+<div>
+<a href="{% url 'shopapp:products_list' %}">
+        Back
+    </a>
+</div>
+
+{% endblock %}
